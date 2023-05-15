@@ -1,0 +1,68 @@
+.background {
+    background-color: rgb(14, 10, 10);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playground {
+  position: relative;
+  width: 90%;
+  height: 60%;
+  background-color: #7b0080;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1em;
+  
+}
+
+.playground__restart-button {
+    width: 20%;
+    height: 55px;
+    background-color: #540057;
+    border-radius: 40px;
+    font-size: medium;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.playground__field {
+    width: 400px;
+    height: 400px;
+    margin: 30px;
+    border: 1px solid black;
+}
+
+.field__cell-row {
+    background-color: rgb(56, 0, 161);
+    height: 10%;
+    display: flex;
+}
+
+.cell-row__cell {
+    width: 10%;
+    border: 1px solid black;
+    transition: background-color 0.5s ease;
+}
+
+.cell-row__cell:hover {
+    background-color: rgb(0, 3, 207);
+}
+
+.cleared {
+    background-color: rgb(0, 255, 55);
+    text-align: center;
+    padding-top: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+h1{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    margin-bottom: 200px;
+}
