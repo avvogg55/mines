@@ -67,7 +67,14 @@ h1{
 }
 
 .bomb-marked {
-    background-color: red;
+    border-radius: 20px;
+    background-color: rgb(255, 174, 0);
+}
+
+.bomb-exploded {
+    background-color: rgb(123, 0, 0);
+    border-radius: 20px;
+    color: red;
 }
 
 @media (max-width: 768px) {

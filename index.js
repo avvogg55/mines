@@ -105,10 +105,19 @@ function clearAdjacentCells(row, col) {
 
 playground.addEventListener('click',(event) => {
     if(event.target.classList.contains('bomb')) {
-        field.remove();
-        const h1 = document.createElement('h1');
-        h1.innerHTML = 'Game over. Try again';
-        playground.appendChild(h1);
+        const bombs = document.querySelectorAll('.bomb');
+
+        for (let i = 0; i < bombs.length; i++) {
+          bombs[i].innerHTML = 'BOOM'
+          bombs[i].classList.add('bomb-exploded')
+        }
+
+        setTimeout(() => {
+          field.remove();
+          const h1 = document.createElement('h1');
+          h1.innerHTML = 'Game over. Try again';
+          playground.appendChild(h1);
+        }, 3000);
     }
 })
 
@@ -118,7 +127,7 @@ restartButton.addEventListener('click', () => {
 
 playground.addEventListener('contextmenu',(event) => {
   event.preventDefault();
-  if(event.target.classList.contains('cell-row__cell')) {
+  if(event.target.classList.contains('cell-row__cell') && event.target.innerHTML === '') {
     event.target.classList.toggle('bomb-marked');
   }
 })
