@@ -69,3 +69,16 @@ h1{
 .bomb-marked {
     background-color: red;
 }
+
+@media (max-width: 768px) {
+    .playground {
+        background-color: blue;
+    }
+
+    .playground__field {
+        width: 280px;
+        height: 280px;
+        margin: 30px;
+        border: 1px solid black;
+    }
+}
