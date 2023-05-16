@@ -116,6 +116,13 @@ restartButton.addEventListener('click', () => {
     location.reload();
 })
 
+playground.addEventListener('contextmenu',(event) => {
+  event.preventDefault();
+  if(event.target.classList.contains('cell-row__cell')) {
+    event.target.classList.toggle('bomb-marked');
+  }
+})
+
 
 
 

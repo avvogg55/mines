@@ -17,7 +17,6 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1em;
-  
 }
 
 .playground__restart-button {
@@ -50,7 +49,7 @@
 }
 
 .cell-row__cell:hover {
-    background-color: rgb(0, 3, 207);
+    background-color: rgb(163, 163, 163);
 }
 
 .cleared {
@@ -65,4 +64,8 @@ h1{
     color: rgb(255, 255, 255);
     font-size: 50px;
     margin-bottom: 200px;
+}
+
+.bomb-marked {
+    background-color: red;
 }
