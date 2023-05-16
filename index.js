@@ -117,7 +117,12 @@ playground.addEventListener('click',(event) => {
           const h1 = document.createElement('h1');
           h1.innerHTML = 'Game over. Try again';
           playground.appendChild(h1);
-        }, 3000);
+
+          const img = document.createElement('img');
+          img.src = 'bang.jpg';
+          img.alt = 'ggg';
+          playground.appendChild(img);
+        }, 2000);
     }
 })
 
