@@ -14,6 +14,25 @@ const field = document.createElement('div');
 field.classList.add('playground__field')
 playground.appendChild(field);
 
+const info = document.createElement('div');
+info.classList.add('playground__info');
+playground.appendChild(info);
+
+const gamePlay = document.createElement('div');
+gamePlay.classList.add('info__game-play');
+gamePlay.innerHTML = 'На карте спрятано 10 бомб.\nНажимай правой кнопкой мыши чтобы пометить бомбы\n (На телефоне нужно зажать клетку пальцем)\nИгра выиграна если на карте верно помечено 10 бомб.'
+info.appendChild(gamePlay);
+
+const bombHeader = document.createElement('div');
+bombHeader.classList.add('info__bomb-header');
+bombHeader.innerHTML = 'Количество оставшихся флагов:';
+info.appendChild(bombHeader);
+
+const bombCounter = document.createElement('div');
+bombCounter.classList.add('info__bomb-counter');
+bombCounter.innerHTML = '10';
+info.appendChild(bombCounter);
+
 const fieldCell = {
     isBomb: false
 };
@@ -108,21 +127,22 @@ playground.addEventListener('click',(event) => {
         const bombs = document.querySelectorAll('.bomb');
 
         for (let i = 0; i < bombs.length; i++) {
-          bombs[i].innerHTML = 'BOOM'
+          //bombs[i].innerHTML = 'BOOM'
           bombs[i].classList.add('bomb-exploded')
         }
 
         setTimeout(() => {
           field.remove();
+          info.remove();
           const h1 = document.createElement('h1');
-          h1.innerHTML = 'Game over. Try again';
+          h1.innerHTML = 'Потрачено. Тебя взорвали! Давай еще похулиганим!';
           playground.appendChild(h1);
 
           const img = document.createElement('img');
           img.src = 'bang.jpg';
           img.alt = 'ggg';
           playground.appendChild(img);
-        }, 2000);
+        }, 1800);
     }
 })
 
@@ -130,12 +150,36 @@ restartButton.addEventListener('click', () => {
     location.reload();
 })
 
-playground.addEventListener('contextmenu',(event) => {
+let flagCounter = 10;
+
+playground.addEventListener('contextmenu', (event) => {
   event.preventDefault();
-  if(event.target.classList.contains('cell-row__cell') && event.target.innerHTML === '') {
-    event.target.classList.toggle('bomb-marked');
+  if (event.target.classList.contains('cell-row__cell')) {
+    if (flagCounter > 0 && !event.target.classList.contains('bomb-marked')) {
+      event.target.classList.add('bomb-marked');
+      flagCounter -= 1;
+      bombCounter.innerHTML = flagCounter;
+    } else if (event.target.classList.contains('bomb-marked')) {
+      event.target.classList.remove('bomb-marked');
+      flagCounter += 1;
+      bombCounter.innerHTML = flagCounter;
+    }
   }
-})
+
+  let checkFlags = document.querySelectorAll('.bomb-marked');
+  let checked = 0;
+  checkFlags.forEach(element => {
+    if(element.classList.contains('bomb')){
+      checked += 1;
+    }
+  });
+
+  if(checked === 10) {
+    field.remove();
+    gamePlay.innerHTML = 'Вы выиграли, все бомбы найдены!';
+  }
+});
+
 
 
 
